@@ -1,3 +1,158 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Basisstijl voor de header */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo links uitlijnen */
+.logo img {
+    height: 90px; /* Pas de hoogte aan naar wens */
+}
+
+/* Navigatie naast logo */
+.navigation {
+    display: flex;
+    gap: 2rem; /* Ruimte tussen de links */
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Iconen rechts */
+.icons {
+    display: flex;
+    gap: 1rem; /* Ruimte tussen de iconen */
+}
+
+.icons a img {
+    height: 24px; /* Pas de grootte van de iconen aan */
+}
+
+/* kit.blade.php CSS */
+/* kit.blade.php CSS */
+/* kit.blade.php CSS */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Tilt de kaart omhoog bij hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Versterkte schaduw bij hover */
+}
+
+.card-img-top {
+    object-fit: cover; /* Zorgt ervoor dat de afbeelding netjes in de kaart past */
+    height: 200px; /* Maak de afbeelding een vaste hoogte */
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* 60% van de schermhoogte */
+    background-image: url('path-to-your-image.jpg'); /* Zet hier het pad naar je afbeelding */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+}
+
+.hero-text {
+    font-size: 3rem;
+    font-weight: bold;
+    animation: fadeIn 3s ease-in-out;
+}
+
+/* Animatie voor de tekst */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Random Producten Sectie */
+.random-products {
+    padding: 2rem 0;
+}
+
+.random-products h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Product Cards */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+
+.hero h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 3rem; /* Pas de grootte aan zoals nodig */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Schaduw voor betere zichtbaarheid */
+}
+
+.content {
+    margin-top: -100px; /* Dit zorgt ervoor dat de inhoud boven de hero-afbeelding komt */
+}

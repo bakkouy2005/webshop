@@ -1,11 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+
+
 
 Route::get('/', function () {
-    return view('welcome');
+    // Haal willekeurige producten op
+    $products = App\Models\Product::inRandomOrder()->take(6)->get(); // Pas het aantal producten aan indien nodig
+
+    return view('homepage', compact('products'));
 });
 
+// Auth routes (voor login, registratie, etc.)
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Home route
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+// In web.php
+Route::get('/kit', [ProductController::class, 'showAllProducts'])->name('kit');
+
+Route::get('/homepage', [ProductController::class, 'showAllProducts'])->name('homepage');
+
+
+// Product resource route (voor CRUD-functies van Product)
+Route::resource('products', ProductController::class);
