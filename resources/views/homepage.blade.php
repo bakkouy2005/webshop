@@ -1,32 +1,21 @@
-<head>
-    
-    <style>
-        .hero {
-    background-image: url('/img/laliga_hero.png');
-    background-size: cover;
-    background-position: center;
-    height: 600px; /* Pas de hoogte aan zoals nodig */
-    position: relative;
-    color: white; /* Zorg ervoor dat de tekst goed zichtbaar is */
-    filter: brightness(10px);
-}
-    </style>
-</head>
-
 @extends('layouts.base')
 
 @section('content')
     <div class="hero">
-        <h1>Welkom bij FC LALIGA hier vind je de beste en goedkoopste kit van alle soorte laliga teams  </h1>
+        <!-- Logo above text with animation -->
+        <img src="/img/logo.png" alt="Logo" class="hero-logo">
+        
+        <!-- Hero text with animation -->
+        <h1 class="hero-text">Welkom bij FC LALIGA, hier vind je de beste en goedkoopste kits van alle soorten La Liga-teams!</h1>
     </div>
 
-    <div class="container content">
-        <h2 class="text-center mb-4">Random Producten</h2>
+    <div class="container content mt-5">
+        <h2 class="text-center mb-4 fade-in-scroll">Random Producten</h2>
         <div class="row">
             @foreach($products as $product)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="{{ asset('storage/' . $product->img_file) }}" class="card-img-top" alt="{{ $product->titel }}">
+                <div class="col-md-4 mb-4 fade-in-scroll">
+                    <div class="card shadow-sm">
+                        <img src="{{ asset('storage/' . $product->img_file) }}" class="card-img-top" alt="">
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $product->titel }}</h5>
                             <p class="card-text">{{ $product->description }}</p>
@@ -38,4 +27,29 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        // Function to check if elements are in view
+        function isInView(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            );
+        }
+
+        // Add 'in-view' class to elements as they come into view
+        function checkScroll() {
+            const elements = document.querySelectorAll('.fade-in-scroll');
+            elements.forEach(el => {
+                if (isInView(el)) {
+                    el.classList.add('in-view');
+                }
+            });
+        }
+
+        // Trigger scroll check on load and scroll
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
 @endsection

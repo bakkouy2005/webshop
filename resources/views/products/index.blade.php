@@ -12,16 +12,21 @@
                     <p class="card-text"><strong>Prijs:</strong> €{{ number_format($product->price, 2) }}</p>
                     <p class="card-text"><strong>Afbeelding Bestand:</strong> {{ $product->img_file }}</p>
                     <p class="card-text"><strong>Geslacht:</strong> {{ ucfirst($product->gender) }}</p>
-                    <p class="card-text"><strong>Patch:</strong> {{ ucfirst($product->choose_patch) }}</p>
-                    <p class="card-text"><strong>Maat:</strong> {{ $product->size }}</p>
+                    
+                    
                     <p class="card-text"><strong>Aantal:</strong> {{ $product->quantity }}</p>
                     
                     <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Aanpassen</a>
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Verwijder de product</button>
+                    </form>
                 </div>
             </div>
         @endforeach
         
         <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Nieuw Product Toevoegen</a>
-        <a href="/kit" class="btn btn-secondary">Naar Kit</a>
+        <a href="/" class="btn btn-secondary mb-3">Terug ></a>
     </div>
 @endsection

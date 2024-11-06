@@ -9,7 +9,7 @@
             <div class="col">
                 <div class="card h-100 shadow-sm border-0 rounded">
                     <!-- Product Image -->
-                    <img src="{{ asset('storage/' . $product->img_file) }}" alt="{{ $product->titel }}" class="card-img-top">
+                    <img src="{{ asset('storage/' . $product->img_file) }}" alt="" class="card-img-top">
                     <div class="card-body">
                         <!-- Product Title -->
                         <h5 class="card-title">{{ $product->titel }}</h5>

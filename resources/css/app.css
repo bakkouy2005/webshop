@@ -3,41 +3,7 @@
 @tailwind utilities;
 
 /* Basisstijl voor de header */
-.main-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
-/* Logo links uitlijnen */
-.logo img {
-    height: 90px; /* Pas de hoogte aan naar wens */
-}
-
-/* Navigatie naast logo */
-.navigation {
-    display: flex;
-    gap: 2rem; /* Ruimte tussen de links */
-}
-
-.navigation a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-/* Iconen rechts */
-.icons {
-    display: flex;
-    gap: 1rem; /* Ruimte tussen de iconen */
-}
-
-.icons a img {
-    height: 24px; /* Pas de grootte van de iconen aan */
-}
 
 /* kit.blade.php CSS */
 /* kit.blade.php CSS */
@@ -57,39 +23,83 @@
 }
 
 /* Hero Section */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 60vh; /* 60% van de schermhoogte */
-    background-image: url('path-to-your-image.jpg'); /* Zet hier het pad naar je afbeelding */
+.hero {
+    background-image: url('/public/img/laliga_hero.png');
     background-size: cover;
     background-position: center;
+    height: 600px;
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-}
-
-.hero-content {
-    text-align: center;
+    justify-content: center;
     color: white;
+    overflow: hidden;
 }
 
+/* Dark and blurred overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    backdrop-filter: blur(2px); /* Slight blur */
+}
+
+/* Logo styling */
+.hero-logo {
+    position: absolute;
+    top: 30px; /* Zorg ervoor dat het logo boven de tekst komt */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0; /* Start als onzichtbaar */
+    animation: fadeInDown 1s ease-out forwards; /* Logo animatie */
+    height: 200px;
+}
+
+/* Hero text styling */
 .hero-text {
-    font-size: 3rem;
+    position: absolute;
+    top: 50%; /* Verticale positie in het midden */
+    left: 50%; /* Horizontale positie in het midden */
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
     font-weight: bold;
-    animation: fadeIn 3s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    opacity: 0; /* Start als onzichtbaar */
+    animation: fadeInUp 1s ease-out forwards; /* Animatie voor de tekst */
 }
 
-/* Animatie voor de tekst */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
+/* Animation for logo (fade in from top) */
+@keyframes fadeInDown {
+    to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0); /* Beweeg naar het midden en omhoog */
     }
+}
+
+/* Animation for hero text (fade in from bottom) */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) translateY(0); /* Beweeg naar het midden en omhoog */
+    }
+}
+
+/* General fade-in scroll animation */
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* When element is in view, apply animation */
+.fade-in-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Random Producten Sectie */
