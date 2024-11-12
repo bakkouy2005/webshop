@@ -9,11 +9,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $product->titel }}</h5>
                     <p class="card-text"><strong>Beschrijving:</strong> {{ $product->description }}</p>
-                    <p class="card-text"><strong>Prijs:</strong> €{{ number_format($product->price, 2) }}</p>
-                    <p class="card-text"><strong>Afbeelding Bestand:</strong> {{ $product->img_file }}</p>
+                    <p class="card-text"><strong>Prijs:</strong> €{{ ($product->price) }}</p>
+                    
                     <p class="card-text"><strong>Geslacht:</strong> {{ ucfirst($product->gender) }}</p>
-                    
-                    
+                    <p class="card-text"><strong>Size:</strong> {{ ucfirst($product->size) }}</p>
                     <p class="card-text"><strong>Aantal:</strong> {{ $product->quantity }}</p>
                     
                     <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning">Aanpassen</a>

@@ -29,7 +29,7 @@ class ProductController extends Controller
         $request->validate([
             'titel' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
+            'price' => 'required|decimal:2',
             'img_file' => 'string',
             'gender' => 'required|string',
             'choose_patch' => 'required|string',
@@ -60,7 +60,7 @@ class ProductController extends Controller
         $request->validate([
             'titel' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
+            'price' => 'required|decimal:2',
             'img_file' => 'string',
             'gender' => 'required|string',
             'choose_patch' => 'required|string',

@@ -55,7 +55,7 @@
     left: 50%;
     transform: translateX(-50%);
     opacity: 0; /* Start als onzichtbaar */
-    animation: fadeInDown 1s ease-out forwards; /* Logo animatie */
+    animation: fadeInDown 3s ease-out forwards; /* Logo animatie */
     height: 200px;
 }
 
@@ -70,7 +70,7 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     text-align: center;
     opacity: 0; /* Start als onzichtbaar */
-    animation: fadeInUp 1s ease-out forwards; /* Animatie voor de tekst */
+    animation: fadeInUp 3s ease-out forwards; /* Animatie voor de tekst */
 }
 
 /* Animation for logo (fade in from top) */

@@ -16,7 +16,7 @@
                         <!-- Product Description -->
                         <p class="card-text">{{ $product->description }}</p>
                         <!-- Product Price -->
-                        <p class="card-text"><strong>Prijs:</strong> €{{ number_format($product->price / 100, 2, ',', '.') }}</p>
+                        <p class="card-text"><strong>Prijs:</strong> €{{ $product->price }}</p>
                         <!-- Product Gender -->
                         <p class="card-text"><strong>Geslacht:</strong> {{ ucfirst($product->gender) }}</p>
                         <!-- Product Size -->

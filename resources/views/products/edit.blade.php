@@ -19,7 +19,7 @@
                 <!-- Prijs -->
                 <div class="mb-3">
                     <label for="price" class="form-label">Prijs</label>
-                    <input type="number" name="price" class="form-control" value="{{ $product->price }}" required>
+                    <input type="decimal" name="price" class="form-control" value="{{ $product->price }}" required>
                 </div>
 
                 <!-- Afbeelding -->

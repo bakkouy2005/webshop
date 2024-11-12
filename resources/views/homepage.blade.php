@@ -19,7 +19,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $product->titel }}</h5>
                             <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-price">€{{ number_format($product->price / 100, 2, ',', '.') }}</p>
+                            <p class="card-price">€{{ $product->price }}</p>
                             <a href="#" class="btn btn-primary">In winkelwagen</a>
                         </div>
                     </div>
