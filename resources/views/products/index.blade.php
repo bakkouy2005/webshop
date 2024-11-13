@@ -8,7 +8,13 @@
             <div class="card mb-3">
                 <div class="card-body">
 
-                    <img src="{{ asset('storage/' . $product->image_file) }}" alt="Product Image">
+                @if($product->img_file)
+    <div class="mt-2">
+        <p>Huidige afbeelding:</p>
+      
+        <img src="{{ asset('storage/images/' . $product->img_file) }}" alt="Afbeelding" class="img-thumbnail" style="max-width: 150px;">
+    </div>
+@endif
 
                     <h5 class="card-title">{{ $product->titel }}</h5>
                     <p class="card-text"><strong>Beschrijving:</strong> {{ $product->description }}</p>

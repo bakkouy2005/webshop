@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Product Details</h2>
         <div>
-            <strong>Afbeelding: </strong> <img src="{{ asset('storage/' . $product->image_file) }}" alt="Product Image">
+            <strong>Afbeelding: </strong> <img src="{{ asset('storage/images/' . $product->img_file) }}" alt="Afbeelding" class="img-thumbnail" style="max-width: 150px;">
 
 
         </div>

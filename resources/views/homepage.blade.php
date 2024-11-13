@@ -15,7 +15,7 @@
             @foreach($products as $product)
                 <div class="col-md-4 mb-4 fade-in-scroll">
                     <div class="card shadow-sm">
-                        <img src="{{ asset('storage/' . $product->img_file) }}" class="card-img-top" alt="">
+                    <img src="{{ asset('storage/images/' . $product->img_file) }}" alt="Afbeelding" class="img-thumbnail" style="max-width: 150px;">
                         <div class="card-body text-center">
                             <h5 class="card-title">{{ $product->titel }}</h5>
                             <p class="card-text">{{ $product->description }}</p>
