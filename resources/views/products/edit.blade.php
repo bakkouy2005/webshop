@@ -6,7 +6,7 @@
             <h2 class="card-title">Product bewerken</h2>
         </div>
         <div class="card-body">
-            <form action="{{ route('products.update', $product->id) }}" method="POST">
+            <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 
@@ -25,7 +25,13 @@
                 <!-- Afbeelding -->
                 <div class="mb-3">
                     <label for="img_file" class="form-label">Afbeelding Bestand</label>
-                    <input type="text" name="img_file" class="form-control" value="{{ $product->img_file }}" required>
+                    <input type="file" name="img_file" class="form-control-file">
+                    @if($product->img_file)
+                        <div class="mt-2">
+                            <img src="{{ asset('storage/' . $product->img_file) }}" alt="Afbeelding" class="img-thumbnail" style="max-width: 150px;">
+                            <p>Huidige afbeelding</p>
+                        </div>
+                    @endif
                 </div>
                 
                 <!-- Beschrijving -->

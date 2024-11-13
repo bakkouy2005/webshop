@@ -7,6 +7,9 @@
         @foreach($products as $product)
             <div class="card mb-3">
                 <div class="card-body">
+
+                    <img src="{{ asset('storage/' . $product->image_file) }}" alt="Product Image">
+
                     <h5 class="card-title">{{ $product->titel }}</h5>
                     <p class="card-text"><strong>Beschrijving:</strong> {{ $product->description }}</p>
                     <p class="card-text"><strong>Prijs:</strong> €{{ ($product->price) }}</p>

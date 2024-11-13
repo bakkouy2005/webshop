@@ -4,6 +4,11 @@
     <div class="container">
         <h2>Product Details</h2>
         <div>
+            <strong>Afbeelding: </strong> <img src="{{ asset('storage/' . $product->image_file) }}" alt="Product Image">
+
+
+        </div>
+        <div>
             <strong>Titel:</strong> {{ $product->titel }}
         </div>
         <div>

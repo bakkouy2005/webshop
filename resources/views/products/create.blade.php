@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2>Nieuw product toevoegen</h2>
-        <form action="{{ route('products.store') }}" method="POST">
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="titel">Titel</label>
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="img_file">Afbeelding Bestand</label>
-                <input type="text" name="img_file" class="form-control">
+                <input type="file" name="img_file" class="form-control-file">
             </div>
             <div class="form-group">
                 <label for="gender">Geslacht</label>
@@ -56,4 +56,3 @@
         </form>
     </div>
 @endsection
-

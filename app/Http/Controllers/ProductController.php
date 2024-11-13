@@ -30,13 +30,21 @@ class ProductController extends Controller
             'titel' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|decimal:2',
-            'img_file' => 'string',
+            'img_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // afbeelding validatie
             'gender' => 'required|string',
             'choose_patch' => 'required|string',
             'size' => 'required|string',
             'quantity' => 'required|numeric',
 
+
+            
         ]);
+
+        if ($request->hasFile('img_file')) {
+            $image_file = $request->file('img_file')->store('images', 'public'); // sla de afbeelding op in de 'public' opslag
+        } else {
+            $image_file = null; // geen afbeelding geüpload
+        }
 
         Product::create($request->all());
 
@@ -61,7 +69,7 @@ class ProductController extends Controller
             'titel' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|decimal:2',
-            'img_file' => 'string',
+            'img_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // afbeelding validatie
             'gender' => 'required|string',
             'choose_patch' => 'required|string',
             'size' => 'required|string',

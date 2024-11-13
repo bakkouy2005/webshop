@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titel');
             $table->decimal('price');
-            $table->string('img_file');
+            $table->string('img_file')->nullable(); // Maak de img_file kolom nullable
             $table->string('description');
             $table->string('gender');
             $table->string('choose_patch');
