@@ -28,7 +28,7 @@
                     <input type="file" name="img_file" class="form-control-file">
                     @if($product->img_file)
                         <div class="mt-2">
-                            <img src="{{ asset('storage/' . $product->img_file) }}" alt="Afbeelding" class="img-thumbnail" style="max-width: 150px;">
+                            <img src="{{ asset('' . $product->img_file) }}" alt="Afbeelding" class="img-thumbnail" style="max-width: 150px;">
                             <p>Huidige afbeelding</p>
                         </div>
                     @endif

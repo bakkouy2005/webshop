@@ -46,7 +46,16 @@ class ProductController extends Controller
             $image_file = null; // geen afbeelding geüpload
         }
 
-        Product::create($request->all());
+        $product = new Product();
+        $product->titel = $request->titel;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->img_file = $image_file;
+        $product->gender = $request->gender;
+        $product->choose_patch = $request->choose_patch;
+        $product->size = $request->size;
+        $product->quantity = $request->quantity;
+        $product->save();
 
         return redirect()->route('products.index')->with('success', 'Product toegevoegd!');
     }
@@ -64,24 +73,43 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'titel' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|decimal:2',
-            'img_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // afbeelding validatie
-            'gender' => 'required|string',
-            'choose_patch' => 'required|string',
-            'size' => 'required|string',
-            'quantity' => 'required|numeric',
-        ]);
+{
+    $request->validate([
+        'titel' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|decimal:2',
+        'img_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // afbeelding validatie
+        'gender' => 'required|string',
+        'choose_patch' => 'required|string',
+        'size' => 'required|string',
+        'quantity' => 'required|numeric',
+    ]);
 
-        $product = Product::findOrFail($id);
-        $product->update($request->all());
+    $product = Product::findOrFail($id);
 
-        return redirect()->route('products.index')->with('success', 'Product bijgewerkt!');
+    
+    if ($request->hasFile('img_file')) {
+        
+        if ($product->img_file && \Storage::disk('public')->exists($product->img_file)) {
+            \Storage::disk('public')->delete($product->img_file);
+        }
+
+        $newImage = $request->file('img_file')->store('images', 'public');
+        $product->img_file = $newImage; 
     }
 
+    // Update de andere velden
+    $product->titel = $request->titel;
+    $product->description = $request->description;
+    $product->price = $request->price;
+    $product->gender = $request->gender;
+    $product->choose_patch = $request->choose_patch;
+    $product->size = $request->size;
+    $product->quantity = $request->quantity;
+    $product->save();
+
+    return redirect()->route('products.index')->with('success', 'Product bijgewerkt!');
+}
     public function destroy($id)
     {
         $product = Product::findOrFail($id);

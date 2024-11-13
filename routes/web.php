@@ -23,6 +23,9 @@ Route::get('/kit', [ProductController::class, 'showAllProducts'])->name('kit');
 
 Route::get('/homepage', [ProductController::class, 'showAllProducts'])->name('homepage');
 
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('products.show');
+
+
 
 // Product resource route (voor CRUD-functies van Product)
 Route::resource('products', ProductController::class);

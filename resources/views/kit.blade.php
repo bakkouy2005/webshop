@@ -1,16 +1,21 @@
-
 @extends('layouts.base')
-
 
 @section('content')
 <div class="container py-5">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         @foreach($products as $product)
             <div class="col">
-                <div class="card h-100 shadow-sm border-0 rounded">
+                <div class="card h-100 shadow-sm border-0 rounded position-relative">
+                    <!-- Product Size Badge -->
+                    <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ $product->size }}</span>
+                    
                     <!-- Product Image -->
-                    <img src="{{ asset('storage/' . $product->img_file) }}" alt="" class="card-img-top">
-                    <div class="card-body">
+                    <a href="{{ route('products.show', $product->id) }}">
+    <img src="{{ asset('storage/' . $product->img_file) }}" alt="{{ $product->titel }}" class="card-img-top">
+</a>
+
+                    
+                    <div class="card-body product-card-body">
                         <!-- Product Title -->
                         <h5 class="card-title">{{ $product->titel }}</h5>
                         <!-- Product Description -->
@@ -19,8 +24,6 @@
                         <p class="card-text"><strong>Prijs:</strong> €{{ $product->price }}</p>
                         <!-- Product Gender -->
                         <p class="card-text"><strong>Geslacht:</strong> {{ ucfirst($product->gender) }}</p>
-                        <!-- Product Size -->
-                        <p class="card-text"><strong>Maat:</strong> {{ $product->size }}</p>
                         <!-- Product Quantity -->
                         <p class="card-text"><strong>Aantal beschikbaar:</strong> {{ $product->quantity }}</p>
                     </div>
@@ -33,3 +36,4 @@
     </div>
 </div>
 @endsection
+
