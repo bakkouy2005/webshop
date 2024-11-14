@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+
 
 
 
@@ -23,7 +25,11 @@ Route::get('/kit', [ProductController::class, 'showAllProducts'])->name('kit');
 
 Route::get('/homepage', [ProductController::class, 'showAllProducts'])->name('homepage');
 
-Route::get('/product/{id}', [ProductController::class, 'show'])->name('products.show');
+// Voeg deze regel toe voor het opslaan van de bestelling
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+
+
+
 
 
 

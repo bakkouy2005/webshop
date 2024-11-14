@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
     <div class="container">
@@ -30,24 +30,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="choose_patch">Kies Patch</label>
-                <select name="choose_patch" class="form-control" required>
-                    <option value="none">Geen Patch</option>
-                    <option value="ucl">UCL</option>
-                    <option value="laliga">La Liga</option>
-                </select>
+                <label for="choose_patch">Deals :</label>
+                <input type="decimal" name="deals" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label for="size">Maat</label>
-                <select name="size" class="form-control" required>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                </select>
-            </div>
+            
             <div class="form-group">
                 <label for="quantity">Aantal</label>
                 <input type="number" name="quantity" class="form-control" required>

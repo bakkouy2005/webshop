@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 <div class="container my-5">
     <div class="card shadow">
@@ -40,38 +40,25 @@
                     <textarea name="description" class="form-control" rows="3" required>{{ $product->description }}</textarea>
                 </div>
 
-                <!-- Geslacht -->
-                <div class="mb-3">
-                    <label for="gender" class="form-label">Geslacht</label>
-                    <select name="gender" class="form-select" required>
-                        <option value="male" {{ $product->gender == 'male' ? 'selected' : '' }}>Man</option>
-                        <option value="female" {{ $product->gender == 'female' ? 'selected' : '' }}>Vrouw</option>
-                        <option value="unisex" {{ $product->gender == 'unisex' ? 'selected' : '' }}>Unisex</option>
-                    </select>
-                </div>
+                <!-- prijs deals -->
 
-                <!-- Kies Patch -->
                 <div class="mb-3">
-                    <label for="choose_patch" class="form-label">Kies Patch</label>
-                    <select name="choose_patch" class="form-select" required>
-                        <option value="none" {{ $product->choose_patch == 'none' ? 'selected' : '' }}>Geen Patch</option>
-                        <option value="ucl" {{ $product->choose_patch == 'ucl' ? 'selected' : '' }}>UCL</option>
-                        <option value="laliga" {{ $product->choose_patch == 'laliga' ? 'selected' : '' }}>La Liga</option>
-                    </select>
+                    <label for="deals" class="form-label">Deals</label>
+                    <input type="decimal" name="deals" class="form-control" value="{{ $product->deals }}" required>
                 </div>
                 
-                <!-- Maat -->
+                
+                <!-- gender  -->
+
                 <div class="mb-3">
-                    <label for="size" class="form-label">Maat</label>
-                    <select name="size" class="form-select" required>
-                        <option value="XS" {{ $product->size == 'XS' ? 'selected' : '' }}>XS</option>
-                        <option value="S" {{ $product->size == 'S' ? 'selected' : '' }}>S</option>
-                        <option value="M" {{ $product->size == 'M' ? 'selected' : '' }}>M</option>
-                        <option value="L" {{ $product->size == 'L' ? 'selected' : '' }}>L</option>
-                        <option value="XL" {{ $product->size == 'XL' ? 'selected' : '' }}>XL</option>
-                        <option value="XXL" {{ $product->size == 'XXL' ? 'selected' : '' }}>XXL</option>
+                    <label for="gender" class="form-label">Kies Geslacht</label>
+                    <select name="gender" class="form-select" required>
+                        <option value="unisex" {{ $product->choose_patch == 'unisex' ? 'selected' : '' }}>unisex</option>
+                        <option value="man" {{ $product->choose_patch == 'man' ? 'selected' : '' }}>man</option>
+                        <option value="vrouw" {{ $product->choose_patch == 'vrouw' ? 'selected' : '' }}>vrouw</option>
                     </select>
                 </div>
+               
 
                 <!-- Aantal -->
                 <div class="mb-3">

@@ -26,19 +26,17 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        /* $request->validate([
             'titel' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|decimal:2',
             'img_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // afbeelding validatie
             'gender' => 'required|string',
-            'choose_patch' => 'required|string',
-            'size' => 'required|string',
+            'deals' => 'nullable|decimal:2',
             'quantity' => 'required|numeric',
-
-
             
         ]);
+        */
 
         if ($request->hasFile('img_file')) {
             $image_file = $request->file('img_file')->store('images', 'public'); // sla de afbeelding op in de 'public' opslag
@@ -52,8 +50,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->img_file = $image_file;
         $product->gender = $request->gender;
-        $product->choose_patch = $request->choose_patch;
-        $product->size = $request->size;
+        $product->deals = $request->deals;
         $product->quantity = $request->quantity;
         $product->save();
 
@@ -62,6 +59,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        
         $product = Product::findOrFail($id);
         return view('products.show', compact('product'));
     }
@@ -74,16 +72,15 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
 {
-    $request->validate([
+    /*$request->validate([
         'titel' => 'required|string|max:255',
         'description' => 'required|string',
         'price' => 'required|decimal:2',
         'img_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // afbeelding validatie
         'gender' => 'required|string',
-        'choose_patch' => 'required|string',
-        'size' => 'required|string',
+        'deals' => 'nullable|decimal:2',
         'quantity' => 'required|numeric',
-    ]);
+    ]);*/
 
     $product = Product::findOrFail($id);
 
@@ -97,14 +94,11 @@ class ProductController extends Controller
         $newImage = $request->file('img_file')->store('images', 'public');
         $product->img_file = $newImage; 
     }
-
-    // Update de andere velden
     $product->titel = $request->titel;
     $product->description = $request->description;
     $product->price = $request->price;
     $product->gender = $request->gender;
-    $product->choose_patch = $request->choose_patch;
-    $product->size = $request->size;
+    $product->deals = $request->deals;
     $product->quantity = $request->quantity;
     $product->save();
 

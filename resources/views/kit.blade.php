@@ -6,29 +6,40 @@
         @foreach($products as $product)
             <div class="col">
                 <div class="card h-100 shadow-sm border-0 rounded position-relative">
-                    <!-- Product Size Badge -->
+                   
                     <span class="badge bg-primary position-absolute top-0 end-0 m-2">{{ $product->size }}</span>
                     
-                    <!-- Product Image -->
-                    <a href="{{ route('products.show', $product->id) }}">
-    <img src="{{ asset('storage/' . $product->img_file) }}" alt="{{ $product->titel }}" class="card-img-top">
-</a>
-
                     
-                    <div class="card-body product-card-body">
-                        <!-- Product Title -->
+                    <a href="{{ route('products.show', $product->id) }}">
+                        <img src="{{ asset('storage/' . $product->img_file) }}" alt="{{ $product->titel }}" class="card-img-top" style="height: 430px; width: 100%; object-fit: cover;">
+                    </a>
+
+                    <div class="card-body text-center product-card-body">
+                        
                         <h5 class="card-title">{{ $product->titel }}</h5>
-                        <!-- Product Description -->
+                        
                         <p class="card-text">{{ $product->description }}</p>
-                        <!-- Product Price -->
-                        <p class="card-text"><strong>Prijs:</strong> €{{ $product->price }}</p>
-                        <!-- Product Gender -->
+
+                        
+                        @if($product->deals != 0.00)
+                            
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-2">Deals</span>
+                           
+                            <p class="card-text text-muted" style="text-decoration: line-through;">€{{ $product->price }}</p>
+                            
+                            <p class="card-text text-danger"><strong>€{{ $product->deals }}</strong></p>
+                        @else
+                            
+                            <p class="card-text"><strong>Prijs:</strong> €{{ $product->price }}</p>
+                        @endif
+
+                       
                         <p class="card-text"><strong>Geslacht:</strong> {{ ucfirst($product->gender) }}</p>
-                        <!-- Product Quantity -->
-                        <p class="card-text"><strong>Aantal beschikbaar:</strong> {{ $product->quantity }}</p>
+                       
+                        
                     </div>
                     <div class="card-footer text-center">
-                        <a href="#" class="btn btn-primary w-100">In winkelwagen</a> <!-- Full width button -->
+                        <a href="#" class="btn btn-primary w-100">In winkelwagen</a> 
                     </div>
                 </div>
             </div>
@@ -36,4 +47,3 @@
     </div>
 </div>
 @endsection
-
